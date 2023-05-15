@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { googleLogout } from '@react-oauth/google';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom'
 
 function Profile(props) {
 
+    const navigate = useNavigate()
+
     const [showSpinner, setShowSpinner] = useState(false)
     const [showActivity, setShowActivity] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(true)
 
     // log out function to log the user out of google and set the profile array to null
     const logOut = () => {
@@ -13,11 +17,22 @@ function Profile(props) {
         props.setProfile(null);
     };
 
-    function handleClick(event) {
+    function handleClick(
+
+    ) {
         setShowSpinner(true)
         setTimeout(() => {
             setShowSpinner(false)
             setShowActivity(true)
+            setIsDisabled(false)
+        }, 2000)
+    }
+
+    function getAnalysis(event) {
+        setShowSpinner(true)
+        setTimeout(() => {
+            setShowSpinner(false)
+            navigate('/analysis')
         }, 2000)
     }
 
@@ -84,6 +99,9 @@ function Profile(props) {
                 }
 
                 <Button className="btn" variant="contained" onClick={handleClick}>Get Device Activity</Button>
+                <br />
+                <br />
+                <Button disabled={isDisabled} variant="contained" color="primary" onClick={getAnalysis}>Get ADHD Analysis</Button>
                 <br />
                 <br />
 

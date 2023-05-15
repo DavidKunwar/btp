@@ -1,4 +1,4 @@
-import Login from "./pages/login";
+import Analysis from "./pages/analysis";
 import Home from "./pages/home";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/analysis" element={<Analysis />} />
       </Routes>
     </div>
   );
