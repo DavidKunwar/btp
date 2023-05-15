@@ -8,7 +8,7 @@ import Profile from '../components/profile';
 function Home() {
 
     const [user, setUser] = useState([]);
-    const [profile, setProfile] = useState([]);
+    const [profile, setProfile] = useState();
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => setUser(codeResponse),
